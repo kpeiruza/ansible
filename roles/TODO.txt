@@ -1,17 +1,15 @@
-base-debian	Ok	
-base-system	OK	
+base-debian	Ok
+base-system	OK
 dash-reconfigure	OK
 dns-bind9	OK	CHROOT!!!!!
-fail2ban	PEND	FINE-TUNE rules for debian?
+fail2ban	PEND	FINE-TUNE filters for debian? most regexp patterns don't match anything at all and consumes CPU!
 quota		OK
 ftp-pureftpd	OK
 ispconfig-download	OK
-ispconfig-install	PEND
-lamp	OK
-mail-antispam-virus	PEND
-mail-dovecot	PEND
-mail-platform	PEND
-mail-postfix	PEND
+ispconfig-install	pending of some "expect" magic to happen
+lamp	OK  Pending to add some bulk security features
+mail-dovecot	OK  Makes no configuration, just install. Fine for ISPConfig.
+postfix-antispam-antivirus	OK  Needs more testing <<<---- It makes a nice SMTP base server with AS+AV+SPF+DKIM+RBL
 mysql	OK
-ssl-cert	OK
+ssl-cert	OK  Generates .key & self-signed .crt for hostname.
 webapp-roundcube	PEND
