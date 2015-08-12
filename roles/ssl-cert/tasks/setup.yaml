@@ -1,0 +1,6 @@
+- name: Generate SSL Certificate
+  command: openssl req -new -newkey rsa:{{certificate_bits}} -nodes -sha512 -x509 -subj "{{certificate_info}}CN={{inventory_hostname}}" -days 3650 -keyout /etc/ssl/private/{{inventory_hostname}}.key -out /etc/ssl/certs/{{inventory_hostname}}.crt -extensions v3_ca creates=/etc/ssl/certs/{{inventory_hostname}}.crt
+
+- name: Fix SSL Certificate perms
+  file: path=/etc/ssl/private/{{inventory_hostname}}.key owner=root mode=0640 group=ssl-cert
+

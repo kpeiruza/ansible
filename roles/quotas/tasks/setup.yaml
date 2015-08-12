@@ -1,0 +1,22 @@
+
+- name: Install Quotas
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+    - quota
+    - quotatool
+
+#	XKB PENDING FIX /etc/fstab & launch quota generation
+#	Fix /etc/fstab
+- name: Fix /etc/fstab
+  replace: dest=/etc/fstab regexp='errors=remount-ro' replace='errors=remount-ro,usrjquota=quota.user,grpjquota=quota.group,jqfmt=vfsv0'
+
+- name: Remount /
+  command: /bin/mount -o remount /
+
+- name: quotacheck -avugm
+  command: /sbin/quotacheck -avugm
+
+- name: quotaon -avug
+  command: /sbin/quotaon -avug
+
+

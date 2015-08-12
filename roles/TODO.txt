@@ -1,0 +1,17 @@
+base-debian	Ok	
+base-system	OK	
+dash-reconfigure	OK
+dns-bind9	OK	CHROOT!!!!!
+fail2ban	PEND	FINE-TUNE rules for debian?
+quota		OK
+ftp-pureftpd	OK
+ispconfig-download	OK
+ispconfig-install	PEND
+lamp	OK
+mail-antispam-virus	PEND
+mail-dovecot	PEND
+mail-platform	PEND
+mail-postfix	PEND
+mysql	OK
+ssl-cert	OK
+webapp-roundcube	PEND

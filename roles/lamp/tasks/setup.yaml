@@ -1,0 +1,56 @@
+- name: Install Apache, PHP and accesories
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+    - apache2
+    - apache2.2-common
+    - apache2-doc
+    - apache2-mpm-prefork
+    - apache2-suexec
+    - apache2-utils
+    - imagemagick
+    - libapache2-mod-fcgid
+    - libapache2-mod-passenger
+    - libapache2-mod-php5
+    - libapache2-mod-python
+    - libapache2-mod-fastcgi
+    - libexpat1
+    - mcrypt
+    - memcached
+    - php5
+    - php5-cgi
+    - php5-cli
+    - php5-common
+    - php5-curl
+    - php5-gd
+    - php5-imagick
+    - php5-imap
+    - php5-intl
+    - php5-mcrypt
+    - php5-memcache
+    - php5-memcached
+    - php5-mysql
+    - php5-pspell
+    - php5-recode
+    - php5-snmp
+    - php5-sqlite
+    - php5-tidy
+    - php5-xcache
+    - php5-xmlrpc
+    - php5-xsl
+    - php-auth
+    - phpmyadmin
+    - php-pear
+
+- apache2_module: state=present name=actions
+- apache2_module: state=present name=alias
+- apache2_module: state=present name=auth_digest
+- apache2_module: state=present name=cgi
+- apache2_module: state=present name=dav
+- apache2_module: state=present name=dav_fs
+- apache2_module: state=present name=fastcgi
+- apache2_module: state=present name=include
+- apache2_module: state=present name=rewrite
+- apache2_module: state=present name=ssl
+- apache2_module: state=present name=suexec
+  notify:
+    - Restart apache2

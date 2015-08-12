@@ -1,0 +1,29 @@
+- name: Download ISPConfig
+  get_url: url="http://tenet.dl.sourceforge.net/project/ispconfig/ISPConfig%203/ISPConfig-3.0.5.4p8/ISPConfig-3.0.5.4p8.tar.gz" dest=/tmp/ispconfig3.tgz mode=0600
+
+- shell: tar xf /tmp/ispconfig3.tgz
+  args:
+    chdir: /tmp
+    creates: /tmp/ispconfig3
+
+#
+#- name: Download Unattended Installation Patch
+#  get_url: url="http://git.ispconfig.org/ispconfig/ispconfig3/commit/bcd725da57d20004a30e6934d5bc9669241461e4.diff" dest="/tmp/ispconfig3_install/install.diff"
+#
+#- shell: patch -p1 < /tmp/ispconfig3_install/install.diff
+#  args:
+#    chdir: /tmp/ispconfig3_install/
+#
+#
+
+#
+#- file: path=/tmp/ispconfig3.tgz state=absent
+#
+#- name: Generate ISPConfig Password
+#  command: /usr/bin/pwgen -s 16
+#  register: ispconfig_pass
+#
+#- template: src=roundcube-config.php dest=/var/www/roundcube/config/config.inc.php
+#
+#- service: name=apache2 state=restarted
+#

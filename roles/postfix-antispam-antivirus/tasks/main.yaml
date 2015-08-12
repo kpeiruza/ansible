@@ -1,0 +1,6 @@
+- name: Check if Postfix is already installed
+  stat: path=/var/spool/postfix
+  register: p
+
+- include: setup.yaml
+  when: not p.stat.exists

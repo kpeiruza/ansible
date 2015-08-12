@@ -1,0 +1,48 @@
+- name: Install Email Platform
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+  - amavisd-new
+  - arj
+  - bzip2
+  - cabextract
+  - clamav
+  - clamav-daemon
+  - clamav-docs
+  - daemon
+  - getmail4
+  - libauthen-sasl-perl
+  - libio-socket-ssl-perl
+  - libio-string-perl
+  - libnet-dns-perl
+  - libnet-ident-perl
+  - libnet-ldap-perl
+  - lrzip
+  - lz4c
+  - lzip
+  - lzma
+  - lzop
+  - nomarch
+  - opendkim
+  - p7zip-full
+  - postfix
+  - postfix-doc
+  - postfix-mysql
+  - postfix-policyd-spf-python
+  - postgrey
+  - rpm
+  - rpm2cpio
+  - spamassassin
+  - swftools
+  - unrar
+  - unzip
+  - zip
+  - zoo
+
+- name: Copy master.cf
+  copy: src=master.cf dest=/etc/postfix/master.cf owner=root group=root mode=0644
+
+- name: Create main.cf from template
+  template: src=main.cf dest=/etc/postfix/main.cf owner=root group=root mode=0640
+  notify:
+    - restart postfix
+

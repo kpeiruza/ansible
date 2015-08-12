@@ -1,0 +1,6 @@
+- name: Check if Pure-FTPd is already installed
+  stat: path=/etc/pure-ftpd/conf
+  register: p
+
+- include: setup.yaml
+  when: not p.stat.exists

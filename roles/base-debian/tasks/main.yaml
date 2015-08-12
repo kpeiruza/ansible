@@ -1,0 +1,27 @@
+- name: copy APT sources list
+  copy: src={{ansible_distribution_release}}-sources.list dest=/etc/apt/sources.list
+    owner=root mode=644 force=yes
+
+- name: update apt list
+  apt: update-cache=yes
+
+- name: install debian/APT specific packages
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+    - apt-listchanges
+    - pwgen
+    - vim-nox
+    - ssl-cert
+    - ssh
+    - openssh-server
+    - vim-nox
+    - ntp
+    - ntpdate
+    - rkhunter
+    - binutils
+    - openssl
+    - sudo
+    - git-core
+    - apticron
+    - cron-apt
+

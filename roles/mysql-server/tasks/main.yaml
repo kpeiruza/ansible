@@ -1,0 +1,8 @@
+- name: Check if MySQL is already installed
+  stat: path=/root/.my.cnf
+  register: mysqlready
+
+- include: setup.yaml
+  when: not mysqlready.stat.exists
+
+#- debug: var=mysqlready

@@ -1,0 +1,23 @@
+- name: create pre-seed directory
+  file: >
+    state=directory path=/usr/local/src/preseed
+    owner=root group=root mode=600
+# }
+# { disable dash as default shell
+- name: dash config
+  copy: >
+    src=dash
+    dest=/usr/local/src/preseed/
+    owner=root mode=600
+  register: dash_seed
+
+- name: disable dash as default shell
+  command: debconf-set-selections /usr/local/src/preseed/dash
+  register: dash_reconf
+  when: dash_seed|changed
+- name: dash reconfigure
+  command: dpkg-reconfigure -fnoninteractive dash
+  register: ispconfig_dash_reconfigure
+  when: dash_reconf|changed
+# }
+

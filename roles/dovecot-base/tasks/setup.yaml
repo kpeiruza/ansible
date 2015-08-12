@@ -1,0 +1,8 @@
+- name: Install Dovecot
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+  - dovecot-imapd
+  - dovecot-pop3d
+  - dovecot-mysql
+  - dovecot-sieve
+  - dovecot-lmtpd

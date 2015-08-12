@@ -1,0 +1,7 @@
+- name: Check if SSL-Cert has been already generated (future check if valid)
+  stat: path=/etc/ssl/certs/{{ inventory_hostname }}.crt
+  register: certready
+
+- include: install.yaml
+  when: "certready.stat.exists == 'True'"
+

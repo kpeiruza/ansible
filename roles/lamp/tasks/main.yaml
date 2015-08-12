@@ -1,0 +1,6 @@
+- name: Check if Apache+PHP is already installed
+  stat: path=/etc/php5/apache2/php.ini
+  register: lampready
+
+- include: setup.yaml
+  when: not lampready.stat.exists

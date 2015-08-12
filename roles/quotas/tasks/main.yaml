@@ -1,0 +1,7 @@
+- name: Check if Quotas are already installed
+  stat: path=/quota.user
+  register: quotaready
+
+- include: setup.yaml
+  when: "quotaready.stat.exists == 'False'"
+

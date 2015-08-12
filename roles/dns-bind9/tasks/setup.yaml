@@ -1,0 +1,11 @@
+#	Install/update Bind9
+- name: Install/Update Bind9
+  apt: pkg={{item}} state=latest update_cache=false
+  with_items:
+    - bind9
+    - dnsutils
+
+- name: Hardening Bind9
+  copy: src=named.conf.options dest=/etc/bind/named.conf.options owner=root group=bind mode=0644
+  notify:
+    - Restart Bind9

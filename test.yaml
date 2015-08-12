@@ -1,0 +1,8 @@
+- hosts: testit.floss.cat
+  roles:
+#	Broken package on postfix, lz4c. Missing roundcube setup.
+    - ispconfig-install
+#     - base-debian
+#    - mysql-server
+#    - lamp
+#    - ispconfig-download

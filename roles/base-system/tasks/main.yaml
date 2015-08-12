@@ -1,0 +1,7 @@
+- name: Check if base system has already finished setup
+  stat: path=/root/pass
+  register: basesystem
+
+- include: setup.yaml
+  when: basesystem.stat.isdir is not defined
+

@@ -1,0 +1,11 @@
+- name: Set Hostname
+  hostname: name={{inventory_hostname}}
+
+- name: Harden Root Folder Permissions
+  file: force=yes owner=root group=root mode=0700 path=/root state=directory
+
+- name: Passwords Folder
+  file: force=yes owner=root group=root mode=0700 path=/root/pass state=directory
+
+- include: debian.yaml
+  when: "ansible_os_family == 'Debian'"

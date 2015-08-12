@@ -1,0 +1,11 @@
+dependencies:
+  - { role: dns-bind9 }
+  - { role: dovecot-base }
+  - { role: postfix-antispam-antivirus }
+  - { role: dash-reconfigure }
+  - { role: quotas }
+  - { role: dns-bind9 }
+  - { role: ispconfig-download }
+  - { role: lamp }
+#  - { role: webapp-roundcube ---> fer? }
+#  - { role: web-stats ---> fer? }

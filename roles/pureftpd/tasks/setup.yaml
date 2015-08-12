@@ -1,0 +1,16 @@
+#	Requires ispconfig_sslcert and ispconfig_mysql
+- name: Install Pure-ftpd
+  apt: pkg={{item}} state=latest update_cache=false
+  register: ispconfig_install_pureftpd
+  with_items:
+    - pure-ftpd-common
+    - pure-ftpd-mysql
+
+- name: Reconfigure pure-ftpd to be STANDALONE and CHROOTed
+  replace: dest=/etc/default/pure-ftpd-common regexp='STANDALONE_OR_INETD=' replace='STANDALONE_OR_INETD=standalone' 
+  replace: dest=/etc/default/pure-ftpd-common regexp='VIRTUALCHROOT=.*' replace='VIRTUALCHROOT=true' 
+
+- name: Config pure-ftpd's TLS
+  command: echo 1 > /etc/pure-ftpd/conf/TLS
+  notify:
+    - restart pure-ftpd-mysql
