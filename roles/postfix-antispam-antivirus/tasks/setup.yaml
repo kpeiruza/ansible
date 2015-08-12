@@ -17,7 +17,6 @@
   - libnet-ident-perl
   - libnet-ldap-perl
   - lrzip
-  - lz4c
   - lzip
   - lzma
   - lzop
@@ -37,12 +36,13 @@
   - unzip
   - zip
   - zoo
+#  - lz4c
 
 - name: Copy master.cf
   copy: src=master.cf dest=/etc/postfix/master.cf owner=root group=root mode=0644
 
 - name: Create main.cf from template
-  template: src=main.cf dest=/etc/postfix/main.cf owner=root group=root mode=0640
+  template: src=main.cf.j2 dest=/etc/postfix/main.cf owner=root group=root mode=0640
   notify:
     - restart postfix
 
