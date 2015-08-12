@@ -1,5 +1,0 @@
-SMTP:	postfix postfix-mysql postfix-doc
-
-IMAP:	getmail4 dovecot-imapd dovecot-pop3d dovecot-mysql dovecot-sieve dovecot-lmtpd
-
-ASAV:	amavisd-new spamassassin clamav clamav-daemon zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
