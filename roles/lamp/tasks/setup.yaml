@@ -51,6 +51,7 @@
 - apache2_module: state=present name=include
 - apache2_module: state=present name=rewrite
 - apache2_module: state=present name=ssl
+- apache2_module: state=present name=headers
 - apache2_module: state=present name=suexec
   notify:
     - Restart apache2

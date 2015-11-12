@@ -1,0 +1,2 @@
+#	ICINGA2 Packages	
+deb http://packages.icinga.org/debian/ icinga-jessie main

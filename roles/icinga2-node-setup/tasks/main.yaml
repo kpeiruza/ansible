@@ -1,0 +1,17 @@
+- name: copy APT sources list for Icinga2 Repository
+  copy: src={{ansible_distribution_release}}-icinga2-sources.list dest=/etc/apt/sources.list.d/icinga2.list
+    owner=root mode=644 force=yes
+
+- name: update apt list
+  apt: update-cache=yes
+
+#       Fix GPG Keys
+- apt_key: keyserver=pgp.mit.edu id=34410682 state=present
+
+- name: Install/Update Icinga2
+  apt: pkg={{item}} state=latest update_cache=yes
+  with_items:
+    - icinga2
+    - nagios-plugins
+    - nagios-plugins-contrib
+

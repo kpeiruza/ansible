@@ -1,8 +1,12 @@
-- hosts: testit.floss.cat
+- hosts: slown.ajrubi.intern
   roles:
 #	Broken package on postfix, lz4c. Missing roundcube setup.
-    - ispconfig-install
-#     - base-debian
-#    - mysql-server
-#    - lamp
-#    - ispconfig-download
+#    - ispconfig-install
+     - base-system
+     - base-debian
+     - mysql-server   
+     - fail2ban
+     - lamp
+     - ssl-cert
+#     - pureftpd
+#     - ispconfig-download

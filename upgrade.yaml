@@ -1,0 +1,3 @@
+- hosts: icinga2
+  roles:
+      - safeupgrade-debian
